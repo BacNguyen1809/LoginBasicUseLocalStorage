@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="EditProfile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container header">
+        <ul>
+            <li>
+                <p style="padding-left: 10px;">CMS</p>
+            </li>
+
+            <li class="dropdown" style="float: right;">
+                <a href="javascript:void(0)" class="dropbtn"><img src="icon/loginIcon.png"
+                        style='height :30px; width:30px;' alt="login icon">
+                    <img src="icon/arrow.png" style='height :18px; width:13px;' alt=""></a>
+                <div class="dropdown-content">
+                    <a href="#" id="editprofile">
+
+                        <img src="icon/loginIcon.png"
+                            style='height :20px; width:20px; display: inline-block;margin: auto;' alt="login icon">
+                        <p style="display: inline-block;padding-left: 5px;margin: auto;"> User Profile</p>
+
+                    </a>
+                    <a href="loginPage.html"><img src="icon/logoutIcon.png"
+                            style='height :20px; width:20px; display: inline-block;margin: auto;' alt="login icon">
+                        <p style="display: inline-block;padding-left: 5px;margin: auto;"> Log Out</p>
+                    </a>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container1">
+
+        <div class="search-container">
+            <div class="item">
+                <form action="/action_page.php" style="width: auto;">
+                    <div class="searchButton">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="itemText">
+                <p><i class="fa-solid fa-table"></i> <a href="#" id="viewcontent">View Content</a> </p>
+            </div>
+            <div class="itemText pick">
+                <p><i class="fa-solid fa-file-export"></i> <a href="#" id="addcontent">Form Content</a> </p><br>
+            </div>
+
+        </div>
+        <div class="info">
+            <div class="info-1">
+                <h1>Add Content</h1>
+                <hr style="text-align: left; margin-left:5px">
+            </div>
+            <div class="info-2">
+
+                <form action="">
+                    <div class="formheader">
+                        <h3>Content form element</h3>
+                    </div>
+                    <div class="insertInfo">
+                        <label for="fn"><b>Title</b></label>
+                        <input id="title" type="text" name="fn" required>
+
+                        <label for="brief"><b>Brief</b></label>
+
+                        <textarea id="brief" name="brief" rows="4" cols="50"></textarea>
+
+                        <label for="content"><b>Content</b></label>
+
+                        <textarea id="content" name="content" rows="12" cols="50"></textarea>
+
+                        <button type="submit" id="submit">Summit Button</button>
+                        <button type="submit" id="reset">Reset Button</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var url = window.location.href.split("?");
+            var emailCheck = url[1];
+
+            $('#submit').click(function (e) {
+                e.preventDefault();
+                var content = $('#content').val();
+                var title = $('#title').val();
+                var brief = $('#brief').val();
+                var today = new Date();
+                var date = today.getFullYear() + '-' 
+                + (today.getMonth() + 1) + '-'
+                 + today.getDate() + '  ' +today.getHours()+':'+today.getMinutes();
+                var content = {
+                    content: content,
+                    title: title,
+                    brief: brief,
+                    emailCheck: emailCheck,
+                    date: date
+                };
+
+                if (typeof (Storage) !== "undefined") {
+                    // Store
+                    sessionStorage.setItem(content.title, JSON.stringify(content));
+                    alert('Success!!')
+
+                } else {
+                    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+                }
+
+
+            })
+            $('#reset').click(function (e) {
+                e.preventDefault();
+                $('#content').val('');
+                $('#title').val('');
+                $('#brief').val('');
+            }
+            )
+            $('#viewcontent').click(function () {
+                var urlView = 'http://127.0.0.1:5500/AssigmentFN.html/ViewContent.html' + '?' + emailCheck;
+                window.location.href = urlView;
+            })
+            $('#editprofile').click(function () {
+                var urlAdd = 'http://127.0.0.1:5500/AssigmentFN.html/EditProfile.html' + '?' + emailCheck;
+                window.location.href = urlAdd;
+            })
+            $('#addcontent').click(function () {
+                var urlAdd = 'http://127.0.0.1:5500/AssigmentFN.html/EditProfile.html' + '?' + emailCheck;
+                window.location.href = urlAdd;
+            })
+        })
+
+    </script>
+</body>
+
+</html>

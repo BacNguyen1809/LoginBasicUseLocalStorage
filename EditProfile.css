@@ -1,0 +1,181 @@
+body{
+    margin: 0;
+}
+.container{
+    border: 1px solid lightgray;
+}
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.header li {
+    float: left;
+}
+
+.header li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px !important;
+    text-decoration: none;
+
+}
+
+.header li a:hover,
+.dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.header li.dropdown {
+    display: inline-block;
+}
+
+.header .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.header .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+
+}
+
+.header .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.header .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.container1 {
+    display: flex;
+
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+}
+
+.search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid lightgray;
+}
+
+.search-container button {
+
+    padding: 6px 10px;
+    margin-top: 8px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.insertInfo {
+    padding: 20px;
+    border: 1px solid lightgray;
+    background-color: white;
+}
+
+.item form {
+
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    margin-left: 5px;
+    margin-top: 30px;
+}
+
+.searchButton {
+    vertical-align: middle;
+    width: 280px;
+}
+
+.insertInfo input[type=text],
+input[type=password],
+input[type=email],
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.info-1 h1 {
+    padding: 12px 20px;
+}
+
+.info-2 h3 {
+    padding: 16px;
+    margin: auto;
+
+}
+
+
+.info-2 form {
+    margin-left: 15px;
+    margin-top: 15px
+}
+
+.formheader {
+    background-color: #f8f8f8;
+}
+
+.itemText {
+    border: 1px solid lightgray;
+    width: 283px;
+    height: 60px;
+
+}
+
+.itemText p {
+    text-align: center;
+    padding: 10px 150px 10px 2px;
+    color: #468cc2;
+    margin-top: 10px;
+}
+
+.itemText p:hover {
+    text-align: center;
+    padding: 10px 150px 10px 2px;
+    color: #468cc2;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.itemText a{
+    text-decoration: none;
+}
+.pick{
+    background: greenyellow;
+}

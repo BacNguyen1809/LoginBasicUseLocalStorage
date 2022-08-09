@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ViewcontentCss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container header">
+        <ul>
+            <li>
+                <p style="padding-left: 10px;">CMS</p>
+            </li>
+
+            <li class="dropdown" style="float: right;">
+                <a href="javascript:void(0)" class="dropbtn"><img src="icon/loginIcon.png"
+                        style='height :30px; width:30px;' alt="login icon">
+                    <img src="icon/arrow.png" style='height :18px; width:13px;' alt=""></a>
+                <div class="dropdown-content">
+                    <a href="#" id="editprofile">
+
+                        <img src="icon/loginIcon.png"
+                            style='height :20px; width:20px; display: inline-block;margin: auto;' alt="login icon">
+                        <p style="display: inline-block;padding-left: 5px;margin: auto;"> User Profile</p>
+
+                    </a>
+                    <a href="loginPage.html"><img src="icon/logoutIcon.png"
+                            style='height :20px; width:20px; display: inline-block;margin: auto;' alt="login icon">
+                        <p style="display: inline-block;padding-left: 5px;margin: auto;"> Log Out</p>
+                    </a>
+
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container1">
+
+        <div class="search-container">
+            <div class="item">
+                <form action="/action_page.php" style="width: auto;">
+                    <div class="searchButton">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="itemText pick">
+                <p><i class="fa-solid fa-table" style="background-color: black;"></i> <a href="#" id="viewcontent">View
+                        Content</a> </p>
+            </div>
+            <div class="itemText">
+                <p><i class="fa-solid fa-file-export"></i> <a href="#" id="addcontent">Form Content</a> </p><br>
+            </div>
+
+        </div>
+        <div class="info">
+            <div class="info-1">
+                <h1>View Content</h1>
+                <hr style="text-align: left; margin-left:5px">
+            </div>
+            <div class="info-2">
+
+                <form action="">
+                    <div class="formheader">
+                        <h3>View Content list</h3>
+                    </div>
+                    <div class="insertInfo">
+                        <table id="tableName">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Brief</th>
+                                <th>Create Day</th>
+                            </tr>
+
+                        </table>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var url = window.location.href.split("?");
+            var emailCheck = url[1];
+
+            initialValue();
+            function initialValue() {
+                for (let i = 1, len = sessionStorage.length; i < len; ++i) {
+                    let user = JSON.parse(sessionStorage.getItem(sessionStorage.key(i)))
+                   
+                    addCountryToTable(i, user.title, user.brief, user.date);
+                }
+            }
+
+            function addCountryToTable(index, title, brief, createdate) {
+   
+                let newRow = $('<tr>')
+                    .append($('<td>').text(index))
+                    .append($('<td>').text(title))
+                    .append($('<td>').text(brief))
+                    .append($('<td>').text(createdate));
+                        console.log(newRow);
+                $('#tableName').append(newRow);
+
+            }
+
+            $('#editprofile').click(function () {
+                var urlView = 'http://127.0.0.1:5500/AssigmentFN.html/EditProfile.html' + '?' + emailCheck;
+                window.location.href = urlView;
+            })
+            $('#addcontent').click(function () {
+                var urlAdd = 'http://127.0.0.1:5500/AssigmentFN.html/AddContent.html' + '?' + emailCheck;
+                window.location.href = urlAdd;
+            })
+            $('#viewcontent').click(function () {
+                var urlAdd = 'http://127.0.0.1:5500/AssigmentFN.html/AddContent.html' + '?' + emailCheck;
+                window.location.href = urlAdd;
+            })
+        })
+
+    </script>
+</body>
+
+</html>
